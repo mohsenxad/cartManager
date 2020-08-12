@@ -1,0 +1,28 @@
+{
+  "name": "cart.shopapi.dev",
+  "version": "1.0.0",
+  "description": "cart manager for online store sites",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development",
+    "build":"webpack --mode production"
+  },
+  "keywords": [
+    "cart",
+    "shopapi"
+  ],
+  "author": "mohsenxad",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@types/lodash": "^4.14.159",
+    "babel-loader": "^8.1.0",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {}
+}
