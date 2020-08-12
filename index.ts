@@ -7,10 +7,12 @@ var cart = new clsCart();
 import {AddToCartButtonComponent} from './src/component/cart/addButton/addToCartButton.cmp';
 import {CartBannerComponent} from './src/component/cart/banner/cartBanner.cmp';
 import { CartPanelComponent } from './src/component/cart/panel/cartPanel.cmp';
+import { CheckoutPanelComponent } from './src/component/checkout/panel/checkoutPanel.cmp';
 
 
 var cartBannerComponent: CartBannerComponent = new CartBannerComponent(document);
 var cartPanelComponent: CartPanelComponent = new CartPanelComponent(document);
+var checkoutPanelComponent: CheckoutPanelComponent = new CheckoutPanelComponent(document);
 
 function insertAddToCartButtonToHTML(): void{
     var goodListItemWebComponentList = document.querySelectorAll('goodListItem');
@@ -41,6 +43,11 @@ function addToCartButtonClicked(good: clsGood){
 function onBannerClicked(){
     cart.togglePanel();
     console.log('clicked');
+    
+}
+
+function onCheckOutClicked(){
+    console.log('checkout');
     
 }
 
@@ -79,5 +86,6 @@ function init(): void{
     insertAddToCartButtonToHTML();
     
     getCartPlaceHolder().appendChild(cartBannerComponent.create(onBannerClicked));
-    getCartPlaceHolder().appendChild(cartPanelComponent.create());
+    getCartPlaceHolder().appendChild(cartPanelComponent.create(onCheckOutClicked));
+    getCartPlaceHolder().appendChild(checkoutPanelComponent.create());
 }

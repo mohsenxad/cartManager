@@ -14,7 +14,7 @@ export class CartPanelComponent{
     }
 
     
-    create(): HTMLDivElement {
+    create(onCheckoutClickMethod:any): HTMLDivElement {
         var cartPanel: HTMLDivElement = document.createElement('div');
         cartPanel.id = 'e__cartPanel';
 
@@ -26,6 +26,7 @@ export class CartPanelComponent{
         
         
         var checkoutButton : HTMLButtonElement = document.createElement('button');
+        checkoutButton.addEventListener('click',function(){onCheckoutClickMethod()})
         checkoutButton.innerText = 'تسویه حساب';
 
         cartPanel.appendChild(cartPanelTitle);
