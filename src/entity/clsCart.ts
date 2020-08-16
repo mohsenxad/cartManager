@@ -5,11 +5,16 @@ export class clsCart {
     cartItemList: clsCartItem[];
     totalPrice: number;
     isPanelVisible : boolean;
+    userTitle: string;
+    mobileNumber: string;
+    shippingAddress: string;
+    storeId: string;
 
-    constructor(){
+    constructor(storeId){
         this.cartItemList = [];
         this.totalPrice = 0;
         this.isPanelVisible = false;
+        this.storeId = storeId;
     }
 
     addToCart(good : clsGood){

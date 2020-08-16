@@ -1,18 +1,15 @@
-import { clsCartItem } from "../../../entity/clsCartItem";
-
 export class removeListItemButtonComponent{
     document: HTMLDocument;
+    removeFromCartButton : HTMLButtonElement;
     
     constructor(document: HTMLDocument){
         this.document = document;
+        this.removeFromCartButton = this.create();
     }
 
-    create(cartItem: clsCartItem, onClickMethod:any){
+    create():HTMLButtonElement{
         var removeFromCartButton : HTMLButtonElement = this.document.createElement('button');
         removeFromCartButton.innerText = 'حذف';
-        removeFromCartButton.addEventListener("click", function(){
-            onClickMethod(cartItem);
-        });
         return removeFromCartButton;
     }
 

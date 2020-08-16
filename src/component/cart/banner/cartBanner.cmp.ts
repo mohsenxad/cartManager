@@ -3,19 +3,18 @@ import {cartBannerCounterComponent} from '../counter/cartBannerCounter.cmp';
 export  class CartBannerComponent{
     document : HTMLDocument;
     counterComponent: HTMLSpanElement;
+    banner: HTMLDivElement;
 
     constructor(document : HTMLDocument){
         this.document = document;
         this.counterComponent = new cartBannerCounterComponent(this.document).create();
+        this.banner = this.create();
     }
 
-    create(onClickMethod: any): HTMLDivElement{
+    create(): HTMLDivElement{
         var banner: HTMLDivElement = document.createElement('div');
         banner.innerText = 'سبد خرید';
         banner.id = 'e__banner__'
-        banner.addEventListener('click', function(){
-            onClickMethod();
-        });
         banner.appendChild(this.counterComponent);
         return banner;
     }

@@ -6,15 +6,27 @@ export class CartPanelComponent{
     document : HTMLDocument;
     cartListComponent : CartListComponent;
     totalPriceComponent : TotalPriceComponent;
+    cartPanel : HTMLDivElement;
+    checkoutButton : HTMLButtonElement;
+    onRemoveFromCartClickedMethod : any;
 
-    constructor(document : HTMLDocument){
+    constructor(document : HTMLDocument, onRemoveFromCartClickedMethod : any){
         this.document = document;
-        this.cartListComponent  = new CartListComponent(this.document);
+        this.onRemoveFromCartClickedMethod = onRemoveFromCartClickedMethod;
+        this.cartListComponent  = new CartListComponent(this.document, this.onRemoveFromCartClickedMethod);
         this.totalPriceComponent = new TotalPriceComponent(this.document);
+        this.cartPanel = this.create();
+    }
+
+    onRemoveFromCartClickedMethodInner(cartItem : clsCartItem):void{
+            console.log('removed');
+            console.log(cartItem);
+            console.log(this);
+            
     }
 
     
-    create(onCheckoutClickMethod:any): HTMLDivElement {
+    create(): HTMLDivElement {
         var cartPanel: HTMLDivElement = document.createElement('div');
         cartPanel.id = 'e__cartPanel';
 
@@ -25,21 +37,20 @@ export class CartPanelComponent{
         totalPriceTitle.innerText = 'مجموع سفارش شما:';
         
         
-        var checkoutButton : HTMLButtonElement = document.createElement('button');
-        checkoutButton.addEventListener('click',function(){onCheckoutClickMethod()})
-        checkoutButton.innerText = 'تسویه حساب';
+        this.checkoutButton  = document.createElement('button');
+        this.checkoutButton.innerText = 'تسویه حساب';
 
         cartPanel.appendChild(cartPanelTitle);
         cartPanel.appendChild(this.cartListComponent.listWebComponent);
         cartPanel.appendChild(totalPriceTitle);
         cartPanel.appendChild(this.totalPriceComponent.totalPriceComponent);
-        cartPanel.appendChild(checkoutButton);
+        cartPanel.appendChild(this.checkoutButton);
 
         return cartPanel;
     }
 
-    update(cartItemList: clsCartItem[] , onRemoveClickMethod:any):void{
-        this.cartListComponent.update(cartItemList, onRemoveClickMethod);
+    update(cartItemList: clsCartItem[]):void{
+        this.cartListComponent.update(cartItemList);
         this.totalPriceComponent.update(this.calculateTotalPrice(cartItemList))
     }
 

@@ -3,11 +3,13 @@ import { CartListItemComponent } from "../listItem/cartListItem.cmp";
 
 export class CartListComponent {
     document : HTMLDocument;
-    listWebComponent: HTMLOListElement
+    listWebComponent: HTMLOListElement;
+    onRemoveFromCartClickedMethod: any;
 
-    constructor(document : HTMLDocument){
+    constructor(document : HTMLDocument, onRemoveFromCartClickedMethod: any){
         this.document = document;
         this.listWebComponent = this.create();
+        this.onRemoveFromCartClickedMethod = onRemoveFromCartClickedMethod;
     }
     
     create(): HTMLOListElement{
@@ -16,16 +18,16 @@ export class CartListComponent {
         return cartPanelOLElemet;
     }
 
-    update(cartItemList: clsCartItem[] , onRemoveClickMethod:any):void {
+    update(cartItemList: clsCartItem[]):void {
         while (this.listWebComponent.firstChild) {
             this.listWebComponent.removeChild(this.listWebComponent.firstChild);
         }
 
-        cartItemList.forEach(function(cartItem:clsCartItem){
-            var cartListComponent: HTMLLIElement  = new CartListItemComponent(document).create(cartItem, function(){onRemoveClickMethod(cartItem);})
+        cartItemList.forEach((cartItem:clsCartItem) => {
+            var cartListComponent: HTMLLIElement  = new CartListItemComponent(document,cartItem, this.onRemoveFromCartClickedMethod).cartListItem;
             this.listWebComponent.appendChild(cartListComponent)
 
-        }, this);
+        });
     }
 
 

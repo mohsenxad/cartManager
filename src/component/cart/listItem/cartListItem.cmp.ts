@@ -4,17 +4,25 @@ import {removeListItemButtonComponent} from '../removeButton/removeListItemButto
 
 export class CartListItemComponent {
     document : HTMLDocument;
+    cartListItem: HTMLLIElement;
+    removeFromCartButton : HTMLButtonElement;
+    onRemoveFromCartClickedMethod: any;
 
-    constructor(document : HTMLDocument){
+    constructor(document : HTMLDocument, cartItem: clsCartItem, onRemoveFromCartClickedMethod: any){
         this.document = document;
+        this.onRemoveFromCartClickedMethod = onRemoveFromCartClickedMethod;
+        this.cartListItem = this.create(cartItem);
     }
 
-    create(cartItem: clsCartItem, onRemoveClickMethod:any):HTMLLIElement{
+
+    private create(cartItem: clsCartItem):HTMLLIElement{
         var cartPnaleOL_LI: HTMLLIElement = this.document.createElement('li');
         cartPnaleOL_LI.id = 'e__cartPanel__cartList__cartItemList__' + cartItem.good.id.toString();
 
-        var removeFromCartButton : HTMLButtonElement = new removeListItemButtonComponent(this.document).create(cartItem, onRemoveClickMethod);
-
+        this.removeFromCartButton =  new removeListItemButtonComponent(this.document).removeFromCartButton;
+        this.removeFromCartButton.addEventListener('click',()=>{
+            this.onRemoveFromCartClickedMethod(cartItem);
+        },false)
         var image: HTMLImageElement = this.document.createElement('img');
         var countSpan: HTMLSpanElement = this.document.createElement('span');
         var titleSpan : HTMLSpanElement = this.document.createElement('span');
@@ -32,7 +40,7 @@ export class CartListItemComponent {
         var removeButton_dt : HTMLElement = this.document.createElement('dt');
         removeButton_dt.innerText = 'حذف';
         var removeButton_dd : HTMLElement = this.document.createElement('dd');
-        removeButton_dd.appendChild(removeFromCartButton)
+        removeButton_dd.appendChild(this.removeFromCartButton)
 
         dl.appendChild(removeButton_dt);
         dl.appendChild(removeButton_dd);
