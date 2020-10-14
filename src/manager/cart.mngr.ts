@@ -19,9 +19,8 @@ export class CartManager{
     checkoutPanelComponent: CheckoutPanelComponent;
     receiptComponent: ReceiptComponent;
     
-    constructor(document : HTMLDocument, storeId: string){
+    constructor(document : HTMLDocument){
         this.document = document;
-        this.cart = new clsCart(storeId);
         this.cartPlaceHolder = this.getCartPlaceHolder();
         this.cartPlaceHolder.setAttribute("class","e__cartManager");
         this.cartBannerComponent = new CartBannerComponent(this.document);
@@ -48,10 +47,18 @@ export class CartManager{
     getCartPlaceHolder(): HTMLElement {
         var cartPanel: HTMLElement = this.document.querySelector('cartPanel');
         if (cartPanel) {
-            return cartPanel;
+            var shopApiStoreId =  cartPanel.getAttribute("shop_api_store_id");
+            if(shopApiStoreId){
+                this.cart = new clsCart(shopApiStoreId);
+                console.log(shopApiStoreId);
+                return cartPanel;
+            }else{
+                console.log('لطفا برای تگ <cartPanel shop_api_store_id="<shopApiStoreId>"></cartPanle> مقدار shop_api_store_id را ثبت کنید');
+            }
+            
         }
         else {
-            console.log('No Cart Panel Element Found');
+            console.log('لطفا در جای مناسب تگ <cartPanel shop_api_store_id="<shopApiStoreId>"></cartPanel> را اضافه کنید.');
         }
     }
 

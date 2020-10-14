@@ -15,7 +15,7 @@ var cartManger: CartManager;
 
 docReady(
     function(){
-        cartManger = new CartManager(document, '5d33094bbc80bc2f6a69a931');
+        cartManger = new CartManager(document);
     }
 )
 
