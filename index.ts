@@ -1,4 +1,3 @@
-import './cartManager.scss';
 import { CartManager } from './src/manager/cart.mngr';
 
 

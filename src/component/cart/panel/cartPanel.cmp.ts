@@ -9,6 +9,7 @@ export class CartPanelComponent{
     cartPanel : HTMLDivElement;
     checkoutButton : HTMLButtonElement;
     onRemoveFromCartClickedMethod : any;
+    isVisible: Boolean;
 
     constructor(document : HTMLDocument, onRemoveFromCartClickedMethod : any){
         this.document = document;
@@ -16,6 +17,7 @@ export class CartPanelComponent{
         this.cartListComponent  = new CartListComponent(this.document, this.onRemoveFromCartClickedMethod);
         this.totalPriceComponent = new TotalPriceComponent(this.document);
         this.cartPanel = this.create();
+        this.isVisible = false;
     }
 
     onRemoveFromCartClickedMethodInner(cartItem : clsCartItem):void{
@@ -29,6 +31,7 @@ export class CartPanelComponent{
     create(): HTMLDivElement {
         var cartPanel: HTMLDivElement = document.createElement('div');
         cartPanel.id = 'e__cartPanel';
+        cartPanel.setAttribute("class", "e__cartPanel_deactive");
 
         var cartPanelTitle : HTMLHeadingElement = document.createElement('h3');
         cartPanelTitle.innerText = 'سبد خرید شما';
@@ -59,6 +62,24 @@ export class CartPanelComponent{
             return sum + cartItem.good.price;
         },0)
         return result;
+    }
+
+    show():void{
+        this.isVisible = true;
+        this.cartPanel.setAttribute("class", "e__cartPanel_active");
+    }
+
+    hide():void{
+        this.isVisible = false;
+        this.cartPanel.setAttribute("class", "e__cartPanel_deactive");
+    }
+
+    toggleVisibility():void{
+        if(this.isVisible == true){
+            this.hide();
+        }else{
+            this.show();
+        }
     }
 
 }

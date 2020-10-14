@@ -8,6 +8,7 @@ import { CheckoutPanelComponent } from "../component/checkout/panel/checkoutPane
 import { OrderValidator } from "../util/validators/order.vld";
 import { OrderService } from "../service/order.srv";
 import { ReceiptComponent } from "../component/checkout/receipt/receipt.cmp";
+import { clsOrder } from "../entity/clsOrder";
 
 export class CartManager{
     document : HTMLDocument;
@@ -22,6 +23,7 @@ export class CartManager{
         this.document = document;
         this.cart = new clsCart(storeId);
         this.cartPlaceHolder = this.getCartPlaceHolder();
+        this.cartPlaceHolder.setAttribute("class","e__cartManager");
         this.cartBannerComponent = new CartBannerComponent(this.document);
         this.cartBannerComponent.banner.addEventListener('click', ()=>{
             this.onBannerClicked();
@@ -57,14 +59,19 @@ export class CartManager{
     onBannerClicked(): void{
         this.cart.togglePanel();
         console.log('banner clicked');
+        this.cartPanelComponent.toggleVisibility();
     }
 
     onCheckOutClicked(): void{
         console.log('checkout clicked');
+        this.cartPanelComponent.hide();
+        this.checkoutPanelComponent.show();
     }
 
-    onSubmitOrderSuceess(response):void{
-        console.log(response);   
+    onSubmitOrderSuceess(order: clsOrder):void{
+        console.log(order);
+        this.receiptComponent.show();
+        this.checkoutPanelComponent.hide();
     }
 
     onOrderSubmitClicked(){
@@ -75,7 +82,14 @@ export class CartManager{
         var validationResult = new OrderValidator().isValid(this.cart);
     
         if(validationResult.isValid){
-            new OrderService().submitOrder(this.cart, this.onSubmitOrderSuceess);
+            new OrderService()
+            .submitOrder(this.cart)
+            .then((createdOrder: clsOrder)=>{
+                this.onSubmitOrderSuceess(createdOrder)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
         }else {
             console.log(validationResult.messageList);
         }

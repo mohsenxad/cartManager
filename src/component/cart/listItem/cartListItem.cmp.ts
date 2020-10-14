@@ -24,6 +24,7 @@ export class CartListItemComponent {
             this.onRemoveFromCartClickedMethod(cartItem);
         },false)
         var image: HTMLImageElement = this.document.createElement('img');
+        image.setAttribute("class","e__cartPanel__cartList__cartItemList__dd_img");
         var countSpan: HTMLSpanElement = this.document.createElement('span');
         var titleSpan : HTMLSpanElement = this.document.createElement('span');
         var priceSpan : HTMLSpanElement = this.document.createElement('span');
@@ -36,6 +37,7 @@ export class CartListItemComponent {
         priceSpan.innerText = cartItem.good.price.toString();
 
         var dl : HTMLDListElement = this.document.createElement('dl');
+        dl.setAttribute("class","e__cartPanel__cartList__cartItemList__dd");
 
         var removeButton_dt : HTMLElement = this.document.createElement('dt');
         removeButton_dt.innerText = 'حذف';
@@ -49,6 +51,7 @@ export class CartListItemComponent {
         var image_dt : HTMLElement = this.document.createElement('dt');
         image_dt.innerText = 'عکس';
         var image_dd: HTMLElement = this.document.createElement('dd');
+        
         image_dd.appendChild(image)
 
         dl.appendChild(image_dt);

@@ -14,6 +14,7 @@ export class CheckoutPanelComponent{
     create():HTMLDivElement{
         var checkoutPanel: HTMLDivElement = document.createElement('div');
         checkoutPanel.id = 'e__checkoutPanel';
+        checkoutPanel.setAttribute("class", "e__checkoutPanel_deactive");
 
         var checkoutForm : HTMLDivElement = document.createElement('div');
        
@@ -74,6 +75,14 @@ export class CheckoutPanelComponent{
 
     getShippingAddress(): string{
         return this.shippingAddressInput.value;
+    }
+
+    show():void{
+        this.checkoutPanel.setAttribute("class", "e__checkoutPanel_active");
+    }
+
+    hide():void{
+        this.checkoutPanel.setAttribute("class", "e__checkoutPanel_deactive");
     }
 
 
