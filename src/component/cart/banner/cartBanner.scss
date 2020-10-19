@@ -1,3 +1,42 @@
 #e__banner__ {
-  background-color: red !important;
+  display: grid;
+  cursor: pointer;
+  width: 190px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  span:first-child {
+    align-items: center;
+    border-radius: 0 23px 23px 0;
+    background-color: #2ecc71;
+    border: solid 2px #2ecc71;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 4.17;
+    letter-spacing: normal;
+    text-align: right;
+    color: #ffffff;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  #e__banner__counter {
+    color: #2ecc71;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 4.17;
+    letter-spacing: normal;
+    display: flex;
+    align-items: center;
+    border: solid 2px #2ecc71;
+    justify-content: center;
+    height: 34px;
+    border-radius: 23px 0 0 23px;
+    background-color: white;
+  }
 }

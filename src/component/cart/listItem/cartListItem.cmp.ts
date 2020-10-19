@@ -65,6 +65,14 @@ export class CartListItemComponent {
         dl.appendChild(title_dt);
         dl.appendChild(title_dd);
 
+        var count_dt : HTMLElement = this.document.createElement('dt');
+        count_dt.innerText = 'تعداد';
+        var count_dd: HTMLElement = this.document.createElement('dd');
+        count_dd.innerText = cartItem.count.toString();
+
+        dl.appendChild(count_dt);
+        dl.appendChild(count_dd);
+
         var price_dt : HTMLElement = this.document.createElement('dt');
         price_dt.innerText = 'قیمت';
         var price_dd: HTMLElement = this.document.createElement('dd');
@@ -73,13 +81,7 @@ export class CartListItemComponent {
         dl.appendChild(price_dt);
         dl.appendChild(price_dd);
 
-        var count_dt : HTMLElement = this.document.createElement('dt');
-        count_dt.innerText = 'تعداد';
-        var count_dd: HTMLElement = this.document.createElement('dd');
-        count_dd.innerText = cartItem.count.toString();
 
-        dl.appendChild(count_dt);
-        dl.appendChild(count_dd);
 
 
         cartPnaleOL_LI.appendChild(dl);
