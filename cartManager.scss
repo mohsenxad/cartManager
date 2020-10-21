@@ -6,4 +6,10 @@
 @use "./src/component/cart/banner/cartBanner.scss";
 @use "./src/component/cart/list/cartList.scss";
 
+body {
+  margin: 0
+}
+*:focus {
+  outline: none
+}
 

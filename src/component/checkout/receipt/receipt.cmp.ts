@@ -12,6 +12,9 @@ export class ReceiptComponent{
         receiptPanel.id = 'e__receipt';
         receiptPanel.setAttribute("class", "e__receipt_deactive");
 
+        var receiptBox : HTMLDivElement = document.createElement('div');
+
+
         var title : HTMLHeadingElement = document.createElement('h3');
         title.innerText = 'سفارش شما با موفقیت ثبت شد';
 
@@ -21,9 +24,9 @@ export class ReceiptComponent{
         var finishButton : HTMLButtonElement = document.createElement('button');
         finishButton.innerText = 'باشه';
 
-        receiptPanel.appendChild(title);
-        receiptPanel.appendChild(description);
-        receiptPanel.appendChild(finishButton);
+        receiptBox.appendChild(title);
+        receiptBox.appendChild(description);
+        receiptBox.appendChild(finishButton);
 
         return receiptPanel;
     }
