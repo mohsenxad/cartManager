@@ -35,7 +35,11 @@ export class CartPanelComponent{
 
         var cartPanelTitle : HTMLHeadingElement = document.createElement('h3');
         cartPanelTitle.innerText = 'سبد خرید شما';
-       
+
+        var cartPanelImg: HTMLDivElement = document.createElement('div');
+        cartPanelImg.setAttribute("class", "e__cartPanel_img");
+
+
         var totalPriceTitle : HTMLHeadingElement = document.createElement('h4');
         totalPriceTitle.innerText = 'مجموع سفارش شما:';
         
@@ -44,6 +48,7 @@ export class CartPanelComponent{
         this.checkoutButton.innerText = 'تسویه حساب';
 
         cartPanel.appendChild(cartPanelTitle);
+        cartPanel.appendChild(cartPanelImg);
         cartPanel.appendChild(this.cartListComponent.listWebComponent);
         cartPanel.appendChild(totalPriceTitle);
         cartPanel.appendChild(this.totalPriceComponent.totalPriceComponent);

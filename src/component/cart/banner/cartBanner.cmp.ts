@@ -13,7 +13,11 @@ export class CartBannerComponent {
 
     create(): HTMLDivElement {
         var banner: HTMLDivElement = document.createElement('div');
+
+
         var cart: HTMLSpanElement = document.createElement('span');
+        cart.setAttribute("class", "e__banner_img");
+
         banner.appendChild(cart);
         cart.innerText = 'سبد خرید';
         banner.id = 'e__banner__'
@@ -22,7 +26,7 @@ export class CartBannerComponent {
     }
 
     updateCounter(count: number): void {
-        this.counterComponent.innerText = count.toString() +' ' +  'محصول ';
+        this.counterComponent.innerText = count.toString() + ' ' + 'محصول ';
     }
 
 

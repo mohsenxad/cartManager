@@ -1,5 +1,4 @@
 
-
 .e__checkoutPanel_active {
 
   border: none;
@@ -11,8 +10,17 @@
   position: absolute;
   width: 100%;
 
-  div {
+  button:first-child {
+    color: #676a82;
+    font-size: 25px;
+    background-color: unset;
+    position: absolute;
+    top: 15px;
+    border: none;
+    cursor: pointer;
+  }
 
+  div:first-child {
     position: fixed;
     margin: auto;
     width: 350px;
@@ -23,7 +31,7 @@
   }
 
 
-  button {
+  button:last-child {
     display: block;
     width: 100%;
     border: none;
@@ -38,8 +46,7 @@
     height: 42px;
     border-radius: 24px;
     background-color: #1875f0;
-    cursor: pointer
-  ;
+    cursor: pointer;
   }
 
 
@@ -91,5 +98,5 @@
 }
 
 .e__checkoutPanel_deactive {
-  display: none!important;
+  display: none !important;
 }

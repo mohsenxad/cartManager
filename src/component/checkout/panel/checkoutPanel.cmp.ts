@@ -17,7 +17,12 @@ export class CheckoutPanelComponent{
         checkoutPanel.setAttribute("class", "e__checkoutPanel_deactive");
 
         var checkoutForm : HTMLDivElement = document.createElement('div');
-       
+
+
+        var checkoutFormImg : HTMLButtonElement = document.createElement('button');
+        checkoutFormImg.innerText = '×';
+
+
 
         var checkoutPanelTitle : HTMLHeadingElement = document.createElement('h3');
         checkoutPanelTitle.innerText = 'نهایی کردن سفارش';
@@ -46,6 +51,7 @@ export class CheckoutPanelComponent{
         
         this.submitButton.innerText = 'ثبت';
 
+        checkoutForm.appendChild(checkoutFormImg);
         checkoutForm.appendChild(checkoutPanelTitle);
 
         checkoutForm.appendChild(userTitleLabel);
