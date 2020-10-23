@@ -1,4 +1,6 @@
-#e__receipt {
+
+.e__receipt_active {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" id="maps-and-flags" width="121.808" height="121.809" viewBox="0 0 121.808 121.809">  <defs>  <style>  .cls-1{fill:#c3e678}.cls-2{fill:#a5d76e}.cls-3{fill:#fff}  </style>  </defs>  <path id="Path_2386" d="M60.9 121.808a60.9 60.9 0 1 1 60.9-60.9 60.974 60.974 0 0 1-60.9 60.9z" class="cls-1" data-name="Path 2386"/>  <path id="Path_2387" d="M89.326 112.088a60.8 60.8 0 0 1-48.04-98.2 60.862 60.862 0 1 0 67.659 94.9 60.526 60.526 0 0 1-19.619 3.3z" class="cls-2" data-name="Path 2387" transform="translate(0 -10.581)"/>  <path id="Path_2388" d="M108.849 213.5a4.186 4.186 0 0 1-2.97-1.231l-25.2-25.2a4.2 4.2 0 0 1 5.94-5.94l22.232 22.231 43.233-43.232a4.2 4.2 0 0 1 5.94 5.94l-46.2 46.2a4.185 4.185 0 0 1-2.975 1.232z" class="cls-3" data-name="Path 2388" transform="translate(-60.546 -121.093)"/>  </svg>');
   border: none;
   display: flex;
   justify-content: center;
@@ -53,12 +55,6 @@
     color: #2f3247;
     margin-bottom: 43px;
   }
-}
-
-.e__receipt_active {
-  display: block;
-  color: blue;
-  border: 1px solid blue;
 }
 
 .e__receipt_deactive {

@@ -1,4 +1,7 @@
-#e__checkoutPanel {
+
+
+.e__checkoutPanel_active {
+
   border: none;
   display: flex;
   justify-content: center;
@@ -9,6 +12,7 @@
   width: 100%;
 
   div {
+
     position: fixed;
     margin: auto;
     width: 350px;
@@ -86,13 +90,6 @@
   }
 }
 
-.e__checkoutPanel_active {
-  display: block;
-  color: blue;
-  border: 1px solid blue;
-}
-
 .e__checkoutPanel_deactive {
-
-  display: none;
+  display: none!important;
 }

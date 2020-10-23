@@ -59,6 +59,7 @@
       &:after {
         content: "×";
         font-size: 13px;
+        cursor: pointer;
         position: absolute;
       }
     }
@@ -71,6 +72,7 @@
 
       &:before {
         content: "×";
+        cursor: pointer;
         font-size: 25px;
         height: 80px;
         align-items: center;
