@@ -18,7 +18,7 @@ export class CartManager{
     cartPanelComponent: CartPanelComponent;
     checkoutPanelComponent: CheckoutPanelComponent;
     receiptComponent: ReceiptComponent;
-    
+
     constructor(document : HTMLDocument){
         this.document = document;
         this.cartPlaceHolder = this.getCartPlaceHolder();
@@ -42,7 +42,7 @@ export class CartManager{
         this.cartPlaceHolder.appendChild(this.checkoutPanelComponent.checkoutPanel);
         this.cartPlaceHolder.appendChild(this.receiptComponent.receiptPanel);
     }
-    
+
 
     getCartPlaceHolder(): HTMLElement {
         var cartPanel: HTMLElement = this.document.querySelector('cartPanel');
@@ -55,7 +55,7 @@ export class CartManager{
             }else{
                 console.log('لطفا برای تگ <cartPanel shop_api_store_id="<shopApiStoreId>"></cartPanle> مقدار shop_api_store_id را ثبت کنید');
             }
-            
+
         }
         else {
             console.log('لطفا در جای مناسب تگ <cartPanel shop_api_store_id="<shopApiStoreId>"></cartPanel> را اضافه کنید.');
@@ -67,11 +67,13 @@ export class CartManager{
         this.cart.togglePanel();
         console.log('banner clicked');
         this.cartPanelComponent.toggleVisibility();
+        this.checkoutPanelComponent.hide();
+        this.receiptComponent.hide();
     }
 
     onCheckOutClicked(): void{
         console.log('checkout clicked');
-        this.cartPanelComponent.hide();
+        this.cartPanelComponent.toggleVisibility();
         this.checkoutPanelComponent.show();
     }
 
@@ -84,10 +86,10 @@ export class CartManager{
     onOrderSubmitClicked(){
         this.cart.userTitle = this.checkoutPanelComponent.getUserTitle();
         this.cart.mobileNumber = this.checkoutPanelComponent.getMobileNumber();
-        this.cart.shippingAddress = this.checkoutPanelComponent.getShippingAddress(); 
-    
+        this.cart.shippingAddress = this.checkoutPanelComponent.getShippingAddress();
+
         var validationResult = new OrderValidator().isValid(this.cart);
-    
+
         if(validationResult.isValid){
             new OrderService()
             .submitOrder(this.cart)
@@ -102,7 +104,7 @@ export class CartManager{
         }
     }
 
-    
+
 
     insertAddToCartButtonToHTML(): void{
         var goodListItemWebComponentList = this.document.querySelectorAll('goodListItem');
@@ -121,7 +123,7 @@ export class CartManager{
         var addToCartButton: HTMLButtonElement = new AddToCartButtonComponent(document, good).addToCartButton;
         addToCartButton.addEventListener('click', ()=>{
             console.log('asd');
-            
+
             this.addToCartButtonClicked(good);
         })
         goodListItemWebComponent.appendChild(addToCartButton);
@@ -142,7 +144,7 @@ export class CartManager{
     hi(){
         console.log('Hi store');
         console.log(this);
-        
+
     }
 
 }
