@@ -1,14 +1,14 @@
 
 .e__checkoutPanel_active {
-
   border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #0000007a;
+  left: 0;
   position: absolute;
-  width: 100%;
+  margin: auto;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(69, 81, 84, 0.16);
+  background-color: #ffffff;
+  padding: 50px 24px 40px 24px;
 
   button:first-child {
     color: #676a82;
@@ -20,15 +20,6 @@
     cursor: pointer;
   }
 
-  div:first-child {
-    position: fixed;
-    margin: auto;
-    width: 350px;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px 0 rgba(69, 81, 84, 0.16);
-    background-color: #ffffff;
-    padding: 50px 24px 40px 24px;
-  }
 
 
   button:last-child {

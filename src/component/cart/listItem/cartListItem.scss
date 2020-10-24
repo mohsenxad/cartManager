@@ -73,6 +73,7 @@
       &:before {
         content: "×";
         cursor: pointer;
+        width: 30px;
         font-size: 25px;
         height: 80px;
         align-items: center;
@@ -80,6 +81,7 @@
         position: absolute;
         color: #b3b3b3;
         right: 0;
+        z-index: 2;
       }
     }
   }

@@ -51,23 +51,22 @@ export class CheckoutPanelComponent{
         
         this.submitButton.innerText = 'ثبت';
 
-        checkoutForm.appendChild(checkoutFormImg);
-        checkoutForm.appendChild(checkoutPanelTitle);
+        checkoutPanel.appendChild(checkoutFormImg);
+        checkoutPanel.appendChild(checkoutPanelTitle);
 
-        checkoutForm.appendChild(userTitleLabel);
-        checkoutForm.appendChild(this.userTitleInput);
-
-        
-        checkoutForm.appendChild(mobileNumberLabel);
-        checkoutForm.appendChild(this.userMobileNumberInput);
-
-        checkoutForm.appendChild(shippingAddressLabel);
-        checkoutForm.appendChild(this.shippingAddressInput);
-
-        checkoutForm.appendChild(this.submitButton);
+        checkoutPanel.appendChild(userTitleLabel);
+        checkoutPanel.appendChild(this.userTitleInput);
 
         
-        checkoutPanel.appendChild(checkoutForm);
+        checkoutPanel.appendChild(mobileNumberLabel);
+        checkoutPanel.appendChild(this.userMobileNumberInput);
+
+        checkoutPanel.appendChild(shippingAddressLabel);
+        checkoutPanel.appendChild(this.shippingAddressInput);
+
+        checkoutPanel.appendChild(this.submitButton);
+
+        
         return checkoutPanel;
     }
 

@@ -12,7 +12,6 @@ export class ReceiptComponent{
         receiptPanel.id = 'e__receipt';
         receiptPanel.setAttribute("class", "e__receipt_deactive");
 
-        var receiptBox : HTMLDivElement = document.createElement('div');
 
         var receiptBoxImg : HTMLButtonElement = document.createElement('button');
         receiptBoxImg.innerText = '×';
@@ -30,10 +29,10 @@ export class ReceiptComponent{
         var finishButton : HTMLButtonElement = document.createElement('button');
         finishButton.innerText = 'باشه';
 
-        receiptBox.appendChild(headerImg);
-        receiptBox.appendChild(title);
-        receiptBox.appendChild(description);
-        receiptBox.appendChild(finishButton);
+        receiptPanel.appendChild(headerImg);
+        receiptPanel.appendChild(title);
+        receiptPanel.appendChild(description);
+        receiptPanel.appendChild(finishButton);
 
         return receiptPanel;
     }
