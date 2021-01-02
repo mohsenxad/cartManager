@@ -14,9 +14,16 @@ function docReady(fn) {
 
 var cartManger: CartManager;
 
+
+
 docReady(
     function(){
         cartManger = new CartManager(document);
+        window.CartManager = cartManger;
     }
 )
+
+declare global {
+    interface Window { CartManager: CartManager;}
+}
 

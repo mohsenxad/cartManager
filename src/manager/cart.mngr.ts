@@ -22,12 +22,13 @@ export class CartManager{
     constructor(document : HTMLDocument){
         this.document = document;
         this.cartPlaceHolder = this.getCartPlaceHolder();
+        
         this.cartPlaceHolder.setAttribute("class","e__cartManager");
         this.cartBannerComponent = new CartBannerComponent(this.document);
         this.cartBannerComponent.banner.addEventListener('click', ()=>{
             this.onBannerClicked();
         })
-        this.cartPanelComponent = new CartPanelComponent(this.document, this.onRemoveCartItemButtonClick.bind(this));
+        this.cartPanelComponent = new CartPanelComponent(this.document, this.onRemoveCartItemButtonClick.bind(this), this.onClearCartClicked.bind(this));
         this.cartPanelComponent.checkoutButton.addEventListener('click',()=>{
             this.onCheckOutClicked();
         })
@@ -41,6 +42,13 @@ export class CartManager{
         this.cartPlaceHolder.appendChild(this.cartPanelComponent.cartPanel);
         this.cartPlaceHolder.appendChild(this.checkoutPanelComponent.checkoutPanel);
         this.cartPlaceHolder.appendChild(this.receiptComponent.receiptPanel);
+
+        this.fetchFromLocalStorage();
+    }
+
+    fetchFromLocalStorage(){
+        this.cartBannerComponent.updateCounter(this.cart.cartItemList.length);
+        this.cartPanelComponent.update(this.cart.cartItemList);
     }
 
 
@@ -50,7 +58,8 @@ export class CartManager{
             var shopApiStoreId =  cartPanel.getAttribute("shop_api_store_id");
             if(shopApiStoreId){
                 this.cart = new clsCart(shopApiStoreId);
-                console.log(shopApiStoreId);
+                console.log('init cartManager for storID :' + shopApiStoreId);
+                this.cart.updateCartFromLocalStorage();
                 return cartPanel;
             }else{
                 console.log('لطفا برای تگ <cartPanel shop_api_store_id="<shopApiStoreId>"></cartPanle> مقدار shop_api_store_id را ثبت کنید');
@@ -107,7 +116,7 @@ export class CartManager{
 
 
     insertAddToCartButtonToHTML(): void{
-        var goodListItemWebComponentList = this.document.querySelectorAll('goodListItem');
+        var goodListItemWebComponentList = this.document.querySelectorAll('shopApigoodListItem');
         goodListItemWebComponentList.forEach((goodListItemWebComponent: HTMLElement) => {
             var currentGood = new clsGood(
                 goodListItemWebComponent.getAttribute("id"),
@@ -122,8 +131,6 @@ export class CartManager{
     insertAddToCartButtonToElement(goodListItemWebComponent: HTMLElement, good: clsGood){
         var addToCartButton: HTMLButtonElement = new AddToCartButtonComponent(document, good).addToCartButton;
         addToCartButton.addEventListener('click', ()=>{
-            console.log('asd');
-
             this.addToCartButtonClicked(good);
         })
         goodListItemWebComponent.appendChild(addToCartButton);
@@ -137,6 +144,12 @@ export class CartManager{
 
     onRemoveCartItemButtonClick(cartItem: clsCartItem):void{
         this.cart.removeFromCart(cartItem);
+        this.cartBannerComponent.updateCounter(this.cart.cartItemList.length);
+        this.cartPanelComponent.update(this.cart.cartItemList);
+    }
+
+    onClearCartClicked():void{
+        this.cart.clearCart();
         this.cartBannerComponent.updateCounter(this.cart.cartItemList.length);
         this.cartPanelComponent.update(this.cart.cartItemList);
     }

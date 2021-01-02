@@ -9,11 +9,13 @@ export class CartPanelComponent{
     cartPanel : HTMLDivElement;
     checkoutButton : HTMLButtonElement;
     onRemoveFromCartClickedMethod : any;
+    onClearCartClicked : any;
     isVisible: Boolean;
 
-    constructor(document : HTMLDocument, onRemoveFromCartClickedMethod : any){
+    constructor(document : HTMLDocument, onRemoveFromCartClickedMethod : any, onClearCartClicked: any){
         this.document = document;
         this.onRemoveFromCartClickedMethod = onRemoveFromCartClickedMethod;
+        this.onClearCartClicked = onClearCartClicked;
         this.cartListComponent  = new CartListComponent(this.document, this.onRemoveFromCartClickedMethod);
         this.totalPriceComponent = new TotalPriceComponent(this.document);
         this.cartPanel = this.create();
@@ -38,6 +40,10 @@ export class CartPanelComponent{
 
         var cartPanelImg: HTMLDivElement = document.createElement('div');
         cartPanelImg.setAttribute("class", "e__cartPanel_img");
+        cartPanelImg.addEventListener('click',()=>{
+            console.log('remove all items');
+            this.onClearCartClicked();
+        }, false)
 
 
         var totalPriceTitle : HTMLHeadingElement = document.createElement('h4');

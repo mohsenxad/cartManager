@@ -1,6 +1,8 @@
 import {clsCartItem} from './clsCartItem';
 import { clsGood } from './clsGood';
 
+import {CartLocalStorageManager} from '../util/localStorage/cart.lcl';
+
 export class clsCart {
     cartItemList: clsCartItem[];
     totalPrice: number;
@@ -9,12 +11,18 @@ export class clsCart {
     mobileNumber: string;
     shippingAddress: string;
     storeId: string;
+    cartLocalStorageManager: CartLocalStorageManager;
 
     constructor(storeId){
         this.cartItemList = [];
         this.totalPrice = 0;
         this.isPanelVisible = false;
         this.storeId = storeId;
+        this.cartLocalStorageManager = new CartLocalStorageManager(storeId);
+    }
+
+    updateCartFromLocalStorage(){
+        this.cartItemList = this.cartLocalStorageManager.getCart()
     }
 
     addToCart(good : clsGood){
@@ -26,6 +34,7 @@ export class clsCart {
         if(!foundCartItemInList){
             var newCartItem = new clsCartItem(good, 1)
             this.cartItemList.push(newCartItem);
+            this.cartLocalStorageManager.updateCart(this.cartItemList);
         }
     }
 
@@ -36,6 +45,12 @@ export class clsCart {
             }
         })
         this.cartItemList = newCartItemList;
+        this.cartLocalStorageManager.updateCart(this.cartItemList);
+    }
+
+    clearCart(){
+        this.cartItemList = [];
+        this.cartLocalStorageManager.updateCart(this.cartItemList);
     }
 
     togglePanel(){

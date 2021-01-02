@@ -8,6 +8,7 @@ export class CartBannerComponent {
     constructor(document: HTMLDocument) {
         this.document = document;
         this.counterComponent = new cartBannerCounterComponent(this.document).create();
+        
         this.banner = this.create();
     }
 
