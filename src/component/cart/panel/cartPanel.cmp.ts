@@ -70,7 +70,7 @@ export class CartPanelComponent{
 
     calculateTotalPrice(cartItemList: clsCartItem[]): number{
         var result : number = cartItemList.reduce(function(sum, cartItem){
-            return sum + cartItem.good.price;
+            return sum + cartItem.good.price.value;
         },0)
         return result;
     }

@@ -1,3 +1,5 @@
+import { clsPrice } from "../../../entity/clsPrice";
+
 export class TotalPriceComponent{
     document : HTMLDocument;
     totalPriceComponent:HTMLLabelElement
@@ -14,6 +16,6 @@ export class TotalPriceComponent{
     }
 
     update(value: number){
-        this.totalPriceComponent.innerText = value.toString();
+        this.totalPriceComponent.innerText = new clsPrice(value).format();
     }
 }

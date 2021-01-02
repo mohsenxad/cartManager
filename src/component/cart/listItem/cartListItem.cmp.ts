@@ -76,7 +76,7 @@ export class CartListItemComponent {
         var price_dt : HTMLElement = this.document.createElement('dt');
         price_dt.innerText = 'قیمت';
         var price_dd: HTMLElement = this.document.createElement('dd');
-        price_dd.innerText = cartItem.good.price.toString();
+        price_dd.innerText = cartItem.good.price.format();
 
         dl.appendChild(price_dt);
         dl.appendChild(price_dd);

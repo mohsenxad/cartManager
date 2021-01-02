@@ -2,10 +2,11 @@ import {clsCartItem} from './clsCartItem';
 import { clsGood } from './clsGood';
 
 import {CartLocalStorageManager} from '../util/localStorage/cart.lcl';
+import { clsPrice } from './clsPrice';
 
 export class clsCart {
     cartItemList: clsCartItem[];
-    totalPrice: number;
+    totalPrice: clsPrice;
     isPanelVisible : boolean;
     userTitle: string;
     mobileNumber: string;
@@ -15,7 +16,7 @@ export class clsCart {
 
     constructor(storeId){
         this.cartItemList = [];
-        this.totalPrice = 0;
+        this.totalPrice = new clsPrice(0);
         this.isPanelVisible = false;
         this.storeId = storeId;
         this.cartLocalStorageManager = new CartLocalStorageManager(storeId);
