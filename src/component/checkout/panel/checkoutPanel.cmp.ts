@@ -6,6 +6,7 @@ export class CheckoutPanelComponent{
     userTitleInput :HTMLInputElement;
     userMobileNumberInput: HTMLInputElement;
     checkoutPanel : HTMLDivElement;
+    closeButton:HTMLButtonElement;
     submitButton : HTMLButtonElement;
     errorPanle: ErrorPanelComponent;
 
@@ -25,6 +26,7 @@ export class CheckoutPanelComponent{
 
         var checkoutFormImg : HTMLButtonElement = document.createElement('button');
         checkoutFormImg.innerText = '×';
+        this.closeButton = checkoutFormImg;
 
 
 

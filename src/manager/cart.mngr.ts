@@ -33,6 +33,9 @@ export class CartManager{
             this.onCheckOutClicked();
         })
         this.checkoutPanelComponent = new CheckoutPanelComponent(this.document);
+        this.checkoutPanelComponent.closeButton.addEventListener('click', ()=>{
+            this.closePanel();
+        },false)
         this.checkoutPanelComponent.submitButton.addEventListener('click', ()=>{
             this.onOrderSubmitClicked();
         })
