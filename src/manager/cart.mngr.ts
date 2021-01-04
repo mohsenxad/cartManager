@@ -33,10 +33,16 @@ export class CartManager{
             this.onCheckOutClicked();
         })
         this.checkoutPanelComponent = new CheckoutPanelComponent(this.document);
+        this.checkoutPanelComponent.closeButton.addEventListener('click', ()=>{
+            this.closePanel();
+        },false)
         this.checkoutPanelComponent.submitButton.addEventListener('click', ()=>{
             this.onOrderSubmitClicked();
         })
         this.receiptComponent = new ReceiptComponent(this.document);
+        this.receiptComponent.finishButton.addEventListener('click', ()=>{
+            this.closePanel();
+        },false)
         this.insertAddToCartButtonToHTML();
         this.cartPlaceHolder.appendChild(this.cartBannerComponent.banner);
         this.cartPlaceHolder.appendChild(this.cartPanelComponent.cartPanel);
@@ -74,8 +80,14 @@ export class CartManager{
 
     onBannerClicked(): void{
         this.cart.togglePanel();
-        console.log('banner clicked');
         this.cartPanelComponent.toggleVisibility();
+        this.checkoutPanelComponent.hide();
+        this.receiptComponent.hide();
+    }
+
+    closePanel(): void{
+        this.cart.togglePanel();
+        this.cartPanelComponent.hide();
         this.checkoutPanelComponent.hide();
         this.receiptComponent.hide();
     }
@@ -85,8 +97,10 @@ export class CartManager{
         this.checkoutPanelComponent.show();
     }
 
+
     onSubmitOrderSuceess(order: clsOrder):void{
         console.log(order);
+        this.onClearCartClicked();
         this.receiptComponent.show();
         this.checkoutPanelComponent.hide();
     }
