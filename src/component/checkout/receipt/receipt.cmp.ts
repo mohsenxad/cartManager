@@ -1,6 +1,7 @@
 export class ReceiptComponent{
     document : HTMLDocument;
     receiptPanel : HTMLDivElement;
+    finishButton : HTMLButtonElement;
 
     constructor(document : HTMLDocument){
         this.document = document;
@@ -28,6 +29,7 @@ export class ReceiptComponent{
 
         var finishButton : HTMLButtonElement = document.createElement('button');
         finishButton.innerText = 'باشه';
+        this.finishButton = finishButton;
 
         receiptPanel.appendChild(headerImg);
         receiptPanel.appendChild(title);
