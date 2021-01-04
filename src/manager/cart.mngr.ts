@@ -87,6 +87,7 @@ export class CartManager{
 
     onSubmitOrderSuceess(order: clsOrder):void{
         console.log(order);
+        this.onClearCartClicked();
         this.receiptComponent.show();
         this.checkoutPanelComponent.hide();
     }
