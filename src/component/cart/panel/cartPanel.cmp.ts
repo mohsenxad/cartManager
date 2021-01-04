@@ -26,9 +26,7 @@ export class CartPanelComponent{
             console.log('removed');
             console.log(cartItem);
             console.log(this);
-            
     }
-
     
     create(): HTMLDivElement {
         var cartPanel: HTMLDivElement = document.createElement('div');
@@ -66,6 +64,7 @@ export class CartPanelComponent{
     update(cartItemList: clsCartItem[]):void{
         this.cartListComponent.update(cartItemList);
         this.totalPriceComponent.update(this.calculateTotalPrice(cartItemList))
+        
     }
 
     calculateTotalPrice(cartItemList: clsCartItem[]): number{

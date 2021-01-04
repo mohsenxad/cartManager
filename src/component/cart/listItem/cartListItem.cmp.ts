@@ -34,7 +34,7 @@ export class CartListItemComponent {
         image.src = cartItem.good.imageUrl;
         titleSpan.innerText = cartItem.good.title;
         countSpan.innerText = cartItem.count.toString();
-        priceSpan.innerText = cartItem.good.price.toString();
+        priceSpan.innerText = cartItem.good.price.format();
 
         var dl : HTMLDListElement = this.document.createElement('dl');
         dl.setAttribute("class","e__cartPanel__cartList__cartItemList__dd");

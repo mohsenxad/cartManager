@@ -1,3 +1,5 @@
+import { ErrorPanelComponent } from "../../share/error/panel/errorPanel.cmp";
+
 export class CheckoutPanelComponent{
     document : HTMLDocument;
     shippingAddressInput : HTMLTextAreaElement;
@@ -5,9 +7,11 @@ export class CheckoutPanelComponent{
     userMobileNumberInput: HTMLInputElement;
     checkoutPanel : HTMLDivElement;
     submitButton : HTMLButtonElement;
+    errorPanle: ErrorPanelComponent;
 
     constructor(document : HTMLDocument){
         this.document = document;
+        this.errorPanle = new ErrorPanelComponent(this.document);
         this.checkoutPanel = this.create();
     }
 
@@ -47,8 +51,9 @@ export class CheckoutPanelComponent{
 
         this.shippingAddressInput = this.document.createElement('textarea');
 
+
+
         this.submitButton = document.createElement('button');
-        
         this.submitButton.innerText = 'ثبت';
 
         checkoutPanel.appendChild(checkoutFormImg);
@@ -63,6 +68,8 @@ export class CheckoutPanelComponent{
 
         checkoutPanel.appendChild(shippingAddressLabel);
         checkoutPanel.appendChild(this.shippingAddressInput);
+
+        checkoutPanel.appendChild(this.errorPanle.errorPanel);
 
         checkoutPanel.appendChild(this.submitButton);
 

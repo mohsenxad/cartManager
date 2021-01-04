@@ -81,7 +81,6 @@ export class CartManager{
     }
 
     onCheckOutClicked(): void{
-        console.log('checkout clicked');
         this.cartPanelComponent.toggleVisibility();
         this.checkoutPanelComponent.show();
     }
@@ -110,6 +109,7 @@ export class CartManager{
             })
         }else {
             console.log(validationResult.messageList);
+            this.checkoutPanelComponent.errorPanle.update(validationResult.messageList);
         }
     }
 
